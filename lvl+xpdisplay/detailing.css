@@ -1,0 +1,107 @@
+html {
+    --center: translate(-50%, 0);
+    --background: lightgrey;
+    --icon-bg: turquoise;
+
+    --size: 3em;
+    --center: calc(var(--size)/2 - 0.5em);
+
+    --transition-time: 1s;
+    background-color: var(--background);
+
+}
+
+body {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: blue;
+}
+
+
+
+#lvlDisplay {
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+    height: var(--size);
+    width: var(--size);
+    background-color: var(--icon-bg);
+    border-radius: 50%;
+}
+
+#xp {
+    position: absolute;
+    top: var(--center);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: 0;
+    background-color: #0000;
+
+    width: calc(var(--size)/1.5);
+    z-index: 2;
+    text-align: center;
+    font-size: 80%;
+
+
+    opacity: 0;
+    transition: opacity var(--transition-time);
+}
+
+#percentage {
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    left: 0
+}
+
+#lvl {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+    transition: translate var(--transition-time);
+}
+
+#lvlLabel {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+    transition: opacity var(--transition-time);
+}
+
+.label {
+    font-size: 40%;
+
+}
+
+/* hiding scrollbar for input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input:focus {
+    outline: none !important;
+}
+
+
+#lvlDisplay:hover #xp,
+#xp:focus {
+    opacity: 1;
+}
+
+#lvlDisplay:hover #lvlLabel,
+#xp:focus~#lvlLabel {
+    opacity: 0
+}
+
+#lvlDisplay:hover #lvl,
+#xp:focus~#lvl {
+    translate: 0 90%;
+}

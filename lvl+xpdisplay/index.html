@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="detailing.css">
+
+        <title>XP Wheel</title>
+        <script src="funcs.js">
+
+        </script>
+    </head>
+
+    <body>
+
+        <div id="lvlDisplay">
+            <input id="xp" type="text" pattern="[0-9]+" inputmode="numeric" min="0" max="300" value="0"
+                onchange="drawProgress(document.getElementById('xp').value)">
+            <p id="lvl">1</p>
+            <canvas id='percentage' height="300" width="300"></canvas>
+            <script type="text/javascript"> drawBar(getCanvasData()) </script>
+            <p class="label" id="lvlLabel">LEVEL</p>
+        </div>
+
+    </body>
+
+</html>
