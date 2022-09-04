@@ -14,8 +14,9 @@
     <body>
 
         <div id="lvlDisplay">
-            <input id="xp" type="text" pattern="[0-9]+" inputmode="numeric" min="0" max="300" value="0"
+            <input id="xp" class="xp" type="text" pattern="[0-9]+" inputmode="numeric" min="0" max="300" value="0"
                 onchange="drawProgress(document.getElementById('xp').value)">
+            <p class="label xp" id="xpLabel">XP</p>
             <p id="lvl">1</p>
             <canvas id='percentage' height="300" width="300"></canvas>
             <script type="text/javascript"> drawBar(getCanvasData()) </script>

@@ -15,7 +15,7 @@ body {
     text-align: center;
     padding: 0;
     margin: 0;
-    color: blue;
+    /* color: blue; */
 }
 
 
@@ -30,23 +30,40 @@ body {
     border-radius: 50%;
 }
 
+.xp {
+    opacity: 0;
+    transition: opacity var(--transition-time);
+}
+
 #xp {
     position: absolute;
     top: var(--center);
     left: 0;
     right: 0;
-    margin: 0 auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     border: 0;
     background-color: #0000;
 
     width: calc(var(--size)/1.5);
     z-index: 2;
     text-align: center;
-    font-size: 80%;
+    font-size: 50%;
 
 
-    opacity: 0;
-    transition: opacity var(--transition-time);
+    /* opacity: 0;
+    transition: opacity var(--transition-time); */
+}
+
+#xpLabel {
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 1.3em;
+
+    /* transition: opacity var(--transition-time); */
 }
 
 #percentage {
@@ -91,8 +108,9 @@ input:focus {
 }
 
 
-#lvlDisplay:hover #xp,
-#xp:focus {
+#lvlDisplay:hover .xp,
+#xp:focus,
+#xp:focus~#xpLabel {
     opacity: 1;
 }
 

@@ -1,0 +1,120 @@
+#ASI {
+    --size: 30rem;
+    --half-size: calc(var(--size)/2);
+
+    position: relative;
+    top: 5rem;
+    margin: auto;
+    padding: 0;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+
+    text-align: center;
+
+    background: lightgrey;
+    color: black;
+}
+
+.abilityScore {
+    position: absolute;
+    height: var(--half-size);
+    width: var(--half-size);
+    left: var(--half-size);
+    overflow: hidden;
+    border-radius: 0 var(--half-size) 0 0;
+
+    transform-origin: bottom left;
+}
+
+.abilityScore::before {
+    position: absolute;
+    height: var(--half-size);
+    width: inherit;
+    left: 0;
+    bottom: 0;
+    content: " ";
+    background-color: teal;
+    transform-origin: 0 100%;
+    transform: skew(-30deg);
+}
+
+.abilityScore * {
+    position: absolute;
+    margin: 0;
+    bottom: 5px;
+}
+
+/* done so there's a mirrored symmetry to make css simpler */
+.left {
+    transform: scaleX(-1) skew(-30deg);
+}
+
+.left * {
+    transform: scaleX(-1) skew(-15deg);
+}
+
+#STR,
+.DEX {
+    rotate: -30deg;
+}
+
+#DEX,
+.STR,
+#INT,
+.INT {
+    rotate: 30deg;
+}
+
+.name {
+    bottom: 5px;
+    left: 4.5rem;
+}
+
+.mod {
+    left: 2rem;
+    bottom: 1rem;
+}
+
+.score {
+    left: 1rem;
+    bottom: 3rem;
+    width: 3em;
+    background-color: #0000;
+    border: 0;
+    text-align: center;
+    font-size: xx-large;
+}
+
+
+.lines {
+    width: 3px;
+    height: var(--size);
+    background: darkgray;
+    position: absolute;
+    display: block;
+    left: var(--half-size);
+}
+
+.lines:nth-of-type(2) {
+    rotate: -60deg;
+}
+
+.lines:nth-of-type(3) {
+    rotate: 60deg;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input:focus {
+    outline: none;
+}
