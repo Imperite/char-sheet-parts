@@ -1,6 +1,7 @@
 #ASI {
-    --size: 30rem;
+    --size: 20rem;
     --half-size: calc(var(--size)/2);
+    --transition-time: 1s;
 
     position: relative;
     top: 5rem;
@@ -43,15 +44,16 @@
     position: absolute;
     margin: 0;
     bottom: 5px;
+    transform-origin: center;
 }
 
 /* done so there's a mirrored symmetry to make css simpler */
 .left {
-    transform: scaleX(-1) skew(-30deg);
+    transform: scaleX(-1);
 }
 
 .left * {
-    transform: scaleX(-1) skew(-15deg);
+    transform: scaleX(-1);
 }
 
 #STR,
@@ -66,24 +68,48 @@
     rotate: 30deg;
 }
 
+#CON {
+    rotate: 90deg
+}
+
+.CON {
+    rotate: -90deg
+}
+
 .name {
-    bottom: 5px;
-    left: 4.5rem;
+    bottom: 0rem;
+    left: 3rem;
 }
 
 .mod {
-    left: 2rem;
-    bottom: 1rem;
+    left: .5rem;
+    bottom: .5rem;
+    width: 2em;
 }
 
 .score {
-    left: 1rem;
+    left: 2.5rem;
     bottom: 3rem;
-    width: 3em;
+    width: 3rem;
     background-color: #0000;
     border: 0;
     text-align: center;
     font-size: xx-large;
+}
+
+.fullname {
+    width: inherit;
+
+    opacity: 0;
+    /* transition: opacity var(--transition-time); */
+}
+
+.abilityScore:hover .fullname {
+    opacity: 1;
+}
+
+.abilityScore:hover .name {
+    opacity: 0;
 }
 
 
