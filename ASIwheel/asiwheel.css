@@ -11,74 +11,108 @@
     height: var(--size);
     border-radius: 50%;
 
-    text-align: center;
+    list-style: none;
 
+    text-align: center;
+    overflow: hidden;
     background: lightgrey;
     color: black;
+}
+
+#ASI ul {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+}
+
+.slice {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    transform-origin: bottom left;
+
+    background-color: teal;
+
+    --flip: 1;
+    --skew: -30deg;
+    --rotation: -30deg;
+    --unskew: 30deg;
+    --unflip: 1;
+    --mini-rotate: 30deg;
+    --origin: bottom left;
+    transform: scaleX(var(--flip)) rotate(var(--rotation)) skew(var(--skew));
+}
+
+.rotate {
+    position: absolute;
+    width: var(--half-size);
+    height: var(--half-size);
+    top: 0;
+    right: 0;
+    transform-origin: bottom left;
+
+    background-color: teal;
 }
 
 .abilityScore {
     position: absolute;
     height: var(--half-size);
     width: var(--half-size);
-    left: var(--half-size);
-    overflow: hidden;
+    top: 0;
+    right: 0;
+
     border-radius: 0 var(--half-size) 0 0;
 
     transform-origin: bottom left;
+    transform: skew(var(--unskew));
 }
 
-.abilityScore::before {
-    position: absolute;
-    height: var(--half-size);
-    width: inherit;
-    left: 0;
-    bottom: 0;
-    content: " ";
-    background-color: teal;
-    transform-origin: 0 100%;
-    transform: skew(-30deg);
-}
-
-.abilityScore * {
+.abilityScore>* {
     position: absolute;
     margin: 0;
     bottom: 5px;
-    transform-origin: center;
+    transform-origin: var(--origin);
+    transform: scaleX(var(--unflip)) rotate(var(--mini-rotate));
 }
 
-/* done so there's a mirrored symmetry to make css simpler */
 .left {
-    transform: scaleX(-1);
+    --flip: -1;
+    --unflip: -1;
+    --origin: bottom right;
 }
 
-.left * {
-    transform: scaleX(-1);
-}
 
 #STR,
-.DEX {
-    rotate: -30deg;
+#INT {
+    --rotate: -30deg;
 }
 
-#DEX,
-.STR,
-#INT,
 .INT {
-    rotate: 30deg;
-}
-
-#CON {
-    rotate: 90deg
-}
-
-.CON {
-    rotate: -90deg
+    --mini-rotate: -30deg;
 }
 
 .name {
     bottom: 0rem;
     left: 3rem;
+    --mini-rotate: 0;
+}
+
+.fullname {
+    width: inherit;
+    --mini-rotate: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    /* transition: opacity var(--transition-time); */
 }
 
 .mod {
@@ -95,13 +129,6 @@
     border: 0;
     text-align: center;
     font-size: xx-large;
-}
-
-.fullname {
-    width: inherit;
-
-    opacity: 0;
-    /* transition: opacity var(--transition-time); */
 }
 
 .abilityScore:hover .fullname {
