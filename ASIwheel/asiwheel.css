@@ -31,6 +31,11 @@
 }
 
 .slice {
+    --flip: 1;
+    --skew: -30deg;
+    --rotate: -30deg;
+    --outside: right;
+
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -40,15 +45,7 @@
     transform-origin: bottom left;
 
     background-color: teal;
-
-    --flip: 1;
-    --skew: -30deg;
-    --rotation: -30deg;
-    --unskew: 30deg;
-    --unflip: 1;
-    --mini-rotate: 30deg;
-    --origin: bottom left;
-    transform: scaleX(var(--flip)) rotate(var(--rotation)) skew(var(--skew));
+    transform: scaleX(var(--flip)) rotate(var(--rotate)) skew(var(--skew));
 }
 
 .rotate {
@@ -72,21 +69,20 @@
     border-radius: 0 var(--half-size) 0 0;
 
     transform-origin: bottom left;
-    transform: skew(var(--unskew));
+    transform: skew(calc(var(--skew) * -1));
 }
 
 .abilityScore>* {
     position: absolute;
     margin: 0;
     bottom: 5px;
-    transform-origin: var(--origin);
-    transform: scaleX(var(--unflip)) rotate(var(--mini-rotate));
+    --flip-dir: calc(var(--flip) * -1);
+    transform: scaleX(var(--flip)) rotate(calc(var(--rotate) * var(--flip-dir)));
 }
 
 .left {
     --flip: -1;
-    --unflip: -1;
-    --origin: bottom right;
+    --outside: left;
 }
 
 
@@ -95,28 +91,34 @@
     --rotate: -30deg;
 }
 
-.INT {
-    --mini-rotate: -30deg;
+#DEX,
+#WIS {
+    --rotate: 30deg;
 }
+
+#CON,
+#CHA {
+    --rotate: 90deg;
+}
+
 
 .name {
     bottom: 0rem;
-    left: 3rem;
-    --mini-rotate: 0;
+    left: 3.5rem;
+    --rotate: 0deg;
 }
 
 .fullname {
+    right: 1em;
     width: inherit;
-    --mini-rotate: 0;
-    left: 0;
-    right: 0;
-    top: 0;
+    --rotate: 0deg;
     opacity: 0;
-    /* transition: opacity var(--transition-time); */
+    text-align: var(--outside);
+    transition: opacity var(--transition-time);
 }
 
 .mod {
-    left: .5rem;
+    left: .6rem;
     bottom: .5rem;
     width: 2em;
 }
@@ -125,10 +127,10 @@
     left: 2.5rem;
     bottom: 3rem;
     width: 3rem;
-    background-color: #0000;
     border: 0;
     text-align: center;
     font-size: xx-large;
+    transition: transform var(--transition-time)
 }
 
 .abilityScore:hover .fullname {
@@ -139,6 +141,9 @@
     opacity: 0;
 }
 
+.abilityScore:hover .score {
+    --rotate: 90deg;
+}
 
 .lines {
     width: 3px;
