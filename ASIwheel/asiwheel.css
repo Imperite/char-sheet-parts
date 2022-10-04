@@ -164,8 +164,7 @@
     transition-delay: var(--delay);
 }
 
-.abilityScore:hover .fullname,
-.abilityScore:hover .name {
+.abilityScore:hover :is(.fullname, .name) {
 
     opacity: var(--hov-opacity);
     left: var(--hov-shift);
