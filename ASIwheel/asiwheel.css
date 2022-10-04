@@ -2,6 +2,8 @@
     --size: 20rem;
     --half-size: calc(var(--size)/2);
     --transition-time: 1s;
+    --delay: calc(var(--transition-time)*1.5);
+    --small-delay: calc(var(--transition-time)*0.5);
 
     position: relative;
     top: 5rem;
@@ -34,7 +36,9 @@
     --flip: 1;
     --skew: -30deg;
     --rotate: -30deg;
-    --outside: right;
+    --inside: left;
+    --shift: 3.5rem;
+    --hov-shift: 1.3rem;
 
     overflow: hidden;
     position: absolute;
@@ -46,6 +50,13 @@
 
     background-color: teal;
     transform: scaleX(var(--flip)) rotate(var(--rotate)) skew(var(--skew));
+}
+
+.left {
+    --flip: -1;
+    --inside: right;
+    --shift: -3.5rem;
+    --hov-shift: -3rem;
 }
 
 .rotate {
@@ -80,11 +91,6 @@
     transform: scaleX(var(--flip)) rotate(calc(var(--rotate) * var(--flip-dir)));
 }
 
-.left {
-    --flip: -1;
-    --outside: left;
-}
-
 
 #STR,
 #INT {
@@ -101,26 +107,48 @@
     --rotate: 90deg;
 }
 
+.name,
+.fullname {
+    --rotate: 0deg;
+
+    will-change: left, opacity, font-size, font-weight;
+
+    transition: left var(--transition-time) var(--small-delay),
+        opacity var(--transition-time) 0s,
+        font-size var(--transition-time) var(--transition-time),
+        font-weight var(--transition-time) var(--transition-time);
+
+    transition-timing-function: ease-in;
+    bottom: .5rem;
+    left: var(--shift);
+    font-size: 1.5em;
+    font-weight: bold;
+
+    width: inherit;
+    text-align: left;
+}
+
 
 .name {
-    bottom: 0rem;
-    left: 3.5rem;
-    --rotate: 0deg;
+    --hov-opacity: 0;
+
+    opacity: 1;
 }
 
 .fullname {
-    right: 1em;
-    width: inherit;
-    --rotate: 0deg;
+    --hov-opacity: 1;
+
     opacity: 0;
-    text-align: var(--outside);
-    transition: opacity var(--transition-time);
 }
 
 .mod {
     left: .6rem;
     bottom: .5rem;
     width: 2em;
+    transition: left, bottom;
+    transition-timing-function: ease-in;
+    transition-duration: var(--transition-time);
+    transition-delay: var(--delay);
 }
 
 .score {
@@ -131,19 +159,39 @@
     background-color: #0000;
     text-align: center;
     font-size: xx-large;
-    transition: transform var(--transition-time)
+    transition: left, bottom;
+    transition-duration: var(--transition-time);
+    transition-delay: var(--delay);
 }
 
-.abilityScore:hover .fullname {
-    opacity: 1;
-}
-
+.abilityScore:hover .fullname,
 .abilityScore:hover .name {
-    opacity: 0;
+
+    opacity: var(--hov-opacity);
+    left: var(--hov-shift);
+    font-size: small;
+    font-weight: normal;
+
+    transition: left, opacity, font-size, font-weight;
+    transition-delay: var(--small-delay), var(--delay), 0s, 0s;
+    transition-duration: var(--transition-time);
+    transition-timing-function: ease-in;
 }
 
 .abilityScore:hover .score {
-    --rotate: 90deg;
+    left: 4rem;
+    bottom: 2rem;
+    transition: left, bottom;
+    transition-duration: var(--transition-time);
+    transition-timing-function: ease-out;
+}
+
+.abilityScore:hover .mod {
+    left: 1.5rem;
+    bottom: 2rem;
+    transition: left, bottom;
+    transition-duration: var(--transition-time);
+    transition-timing-function: ease-out;
 }
 
 .lines {
