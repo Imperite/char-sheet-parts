@@ -1,0 +1,95 @@
+.bubble {
+    --width: 30em;
+    position: relative;
+    top: 10em;
+    width: var(--width);
+    height: 10em;
+    margin: auto;
+    padding: 0;
+    border-radius: 10%;
+    background: lightblue;
+}
+
+.bubble * {
+    position: absolute;
+    margin: 0;
+}
+
+#title {
+    left: 1.5rem;
+    top: .5rem;
+}
+
+#actionType {
+    right: 1.5rem;
+    top: .2rem;
+
+    padding: 2px 2px 1px 2px;
+    border: .1rem;
+    border-color: black;
+    border-style: solid;
+    border-radius: 15%;
+}
+
+#lineBreak {
+    position: absolute;
+    left: 0;
+    top: 2.9rem;
+    height: 3px;
+    width: var(--width);
+    background: darkgray;
+}
+
+#description {
+    top: 3rem;
+}
+
+.action {
+    top: 5rem;
+}
+
+.action>* {
+    position: absolute;
+    margin: 0;
+}
+
+#actiontype {
+    left: 3rem;
+}
+
+#actionDice {
+    left: 7.5rem;
+}
+
+.actionValue {
+    text-align: left;
+    left: 9.2rem;
+}
+
+#value {
+    translate: 2rem;
+    padding: 2px 2px 1px 2px;
+    border: .1rem;
+    border-color: black;
+    border-style: solid;
+    border-radius: 15%;
+}
+
+.effect {
+    top: 2rem;
+    left: 2rem;
+}
+
+#label {
+    left: 2rem;
+    border-bottom: 1px solid black;
+}
+
+.effect>.dice {
+    left: 7rem;
+}
+
+.effectValue {
+    text-align: left;
+    left: 8.5rem;
+}

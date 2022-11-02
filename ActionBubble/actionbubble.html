@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="actionbubble.css">
+
+        <title>Action Bubble</title>
+    </head>
+
+    <body>
+        <div class="bubble">
+            <h2 id="title">Longsword</h2>
+            <h2 id="actionType">Action</h2>
+            <span id="lineBreak"></span>
+            <i id="description">martial weapon</i>
+
+            <!-- code for one action -->
+            <div class="action">
+                <button id="addAction" class="addEffect">+</button>
+                <select id="actiontype">
+                    <option>Attack</option>
+                    <option>Spell</option>
+                </select>
+                <!-- TODO: add selector for atk/save -->
+                <button id="actionDice" class="dice">20</button>
+                <p id="modifier" class="actionValue">+7</p>
+                <p id="value" class="actionValue">STR+PROF</p>
+
+                <!-- code for one effect -->
+                <div class="effect">
+                    <span class="indent"></span>
+                    <button id="addEffect" class="addEffect">+</button>
+                    <p id="label">Damage:</p>
+                    <button class="dice">8</button>
+                    <p id="modifier" class="effectValue">+5</p>
+                    <p id="value" class="effectValue">STR</p>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>
