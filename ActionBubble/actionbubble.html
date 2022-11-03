@@ -10,36 +10,46 @@
     </head>
 
     <body>
-        <div class="bubble">
+        <ul class="bubble">
+            <!-- <li class="bubble"> -->
             <h2 id="title">Longsword</h2>
             <h2 id="actionType">Action</h2>
             <span id="lineBreak"></span>
             <i id="description">martial weapon</i>
 
             <!-- code for one action -->
-            <div class="action">
+            <li class="action">
                 <button id="addAction" class="addEffect">+</button>
                 <select id="actiontype">
                     <option>Attack</option>
                     <option>Spell</option>
                 </select>
-                <!-- TODO: add selector for atk/save -->
                 <button id="actionDice" class="dice">20</button>
                 <p id="modifier" class="actionValue">+7</p>
-                <p id="value" class="actionValue">STR+PROF</p>
+                <p id="value" class="actionValue" contenteditable="true" spellcheck="false">STR+PROF</p>
 
                 <!-- code for one effect -->
-                <div class="effect">
-                    <span class="indent"></span>
-                    <button id="addEffect" class="addEffect">+</button>
-                    <p id="label">Damage:</p>
-                    <button class="dice">8</button>
-                    <p id="modifier" class="effectValue">+5</p>
-                    <p id="value" class="effectValue">STR</p>
-                </div>
-            </div>
+                <ul class="effects">
+                    <li class="effect">
+                        <!-- <span class="indent"></span> -->
+                        <button id="addEffect" class="addEffect">+</button>
+                        <select id="effecttype">
+                            <option>Damage</option>
+                            <option>Condition</option>
+                            <option>Other</option>
+                        </select>
+                        <div class="damage">
+                            <button class="dice">8</button>
+                            <p id="modifier" class="effectValue">+5</p>
+                            <p id="value" class="effectValue" contenteditable="true" spellcheck="false">STR</p>
+                            <p id="damageType">Piercing</p>
+                        </div>
 
-        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- </li> -->
+        </ul>
     </body>
 
 </html>

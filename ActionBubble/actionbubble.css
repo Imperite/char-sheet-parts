@@ -1,56 +1,63 @@
 .bubble {
     --width: 30em;
     position: relative;
-    top: 10em;
     width: var(--width);
-    height: 10em;
+    top: 5em;
     margin: auto;
-    padding: 0;
-    border-radius: 10%;
-    background: lightblue;
+    padding: 10px;
+    border-radius: 5px;
+    background: lightgray;
+    list-style: none;
+
+    display: grid;
+    row-gap: 5px;
+    column-gap: 10px;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 1fr;
 }
 
-.bubble * {
-    position: absolute;
+.bubble>* {
+    /* position: relative; */
     margin: 0;
+    grid-column: 1/3;
 }
 
 #title {
-    left: 1.5rem;
-    top: .5rem;
+    grid-column: 1;
+    grid-row: 1;
+    /* left: 1.5rem;
+    top: .5rem; */
 }
 
 #actionType {
-    right: 1.5rem;
-    top: .2rem;
-
-    padding: 2px 2px 1px 2px;
-    border: .1rem;
-    border-color: black;
-    border-style: solid;
-    border-radius: 15%;
+    grid-row: 1;
+    grid-column: 2;
+    text-align: right;
 }
 
 #lineBreak {
-    position: absolute;
-    left: 0;
-    top: 2.9rem;
+    grid-row: 2;
+
     height: 3px;
     width: var(--width);
     background: darkgray;
 }
 
 #description {
-    top: 3rem;
+    grid-row: 3;
 }
 
 .action {
-    top: 5rem;
+    grid-row: 4;
+
+    display: grid;
+    column-gap: 5px;
+    grid-template-columns: 30px 20% 10% 10% 1fr;
 }
 
 .action>* {
-    position: absolute;
-    margin: 0;
+    grid-row: 1;
+    margin: auto;
 }
 
 #actiontype {
@@ -63,33 +70,79 @@
 
 .actionValue {
     text-align: left;
-    left: 9.2rem;
+
+}
+
+#modifier {
+    margin: auto 0;
+    text-align: right;
+    /* flex-grow: 1; */
 }
 
 #value {
-    translate: 2rem;
+    margin-left: 0;
+    text-align: left;
     padding: 2px 2px 1px 2px;
-    border: .1rem;
-    border-color: black;
-    border-style: solid;
-    border-radius: 15%;
+    border: .1rem solid black;
+    border-radius: 5px;
+    width: auto;
+    word-break: break-all;
+    /* flex-grow: 2; */
+    /* white-space: nowrap; */
+}
+
+.effects {
+    grid-row: 2;
+    grid-column: 2 / 6;
+    list-style: none;
+    margin: auto 0;
+    padding: 0;
 }
 
 .effect {
-    top: 2rem;
-    left: 2rem;
+    display: grid;
+    column-gap: 5px;
+    grid-template-columns: 30px 20% 1fr 20%;
 }
 
-#label {
-    left: 2rem;
-    border-bottom: 1px solid black;
+.effect>* {
+    grid-row: 1;
+    margin: auto;
 }
 
-.effect>.dice {
-    left: 7rem;
+#effectType {
+    width: min-content;
 }
 
-.effectValue {
-    text-align: left;
-    left: 8.5rem;
+.damage {
+    grid-column: 3 /5;
+    margin: auto 0;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    column-gap: 10px;
+    overflow: hidden;
+
+}
+
+.dice,
+.addEffect {
+    margin-right: 0;
+    padding: 2px;
+    transition: padding .2s;
+}
+
+.dice:hover,
+.addEffect:hover {
+    padding: 5px;
+}
+
+button,
+select {
+    background-color: inherit;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
 }
