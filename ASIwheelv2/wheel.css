@@ -1,0 +1,79 @@
+.asi {
+    margin: auto;
+    --height: 5rem;
+    --width: calc(var(--height) * 0.645);
+    --color: blue;
+
+    width: calc(var(--width) * 4.2);
+    height: calc(var(--height) * 3);
+    display: grid;
+    column-gap: 5px;
+    row-gap: 4px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.hex {
+    position: relative;
+    background-color: var(--color);
+    border-radius: calc(var(--height) / 10);
+    width: var(--width);
+    height: var(--height);
+    margin-top: calc(var(--height)/2);
+    margin-left: auto;
+    margin-right: auto;
+
+    transition: transform 400ms ease;
+}
+
+.hex.shift {
+    margin-top: 0;
+}
+
+.hex.bottom {
+    margin-top: 0;
+    grid-row: 2;
+}
+
+.hex.bottom.shift {
+    margin-top: calc(var(--height)/2);
+}
+
+.row {
+    clear: left;
+}
+
+.hex::before,
+.hex::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    border-radius: inherit;
+    top: 0;
+    z-index: -1;
+}
+
+.hex::before {
+    transform: rotate(60deg);
+}
+
+.hex::after {
+    transform: rotate(-60deg);
+}
+
+.hex:hover {
+    --color: red;
+    transform: scale(1.05);
+}
+
+.abbrev {
+    font-weight: bold;
+    font-size: larger;
+    width: var(--height);
+    text-align: center;
+    margin: 0;
+    top: 100%;
+}
