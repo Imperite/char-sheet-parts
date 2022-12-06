@@ -11,12 +11,24 @@
 
     <body>
         <div class="asi">
-            <div class="hex">STR</div>
+            <div class="hex">
+                <div class="name">
+                    <p class="abbrev">Str</p>
+                    <p class="full">Strength</p>
+                </div>
+                <input type="text" inputmode="numeric" class="score" id="strLabel" min="0" value="18" />
+                <label class="modifier" for="strLabel">+4</label>
+            </div>
             <div class="hex shift">DEX</div>
-            <div class="hex">CON</div>
-            <div class="hex bottom">INT</div>
-            <div class="hex bottom shift">WIS</div>
-            <div class="hex bottom">CHA</div>
+            <div class="hex ">CON</div>
+            <div class="hex middle ">INT</div>
+            <div class="hex middle shift">
+                <p class="name">PROF</p>
+                <p class="fullname"></p>
+                <input type="text" inputmode="numeric" class="score" id="profLabel" min="0" value="+2" />
+            </div>
+            <div class="hex middle">CHA</div>
+            <div class="hex bottom center shift">WIS</div>
         </div>
 
     </body>

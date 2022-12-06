@@ -2,15 +2,14 @@
     margin: auto;
     --height: 5rem;
     --width: calc(var(--height) * 0.645);
-    --color: blue;
-
+    --color: lightgray;
+    --anim: .5s;
     width: calc(var(--width) * 4.2);
-    height: calc(var(--height) * 3);
     display: grid;
     column-gap: 5px;
     row-gap: 4px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 .hex {
@@ -19,27 +18,37 @@
     border-radius: calc(var(--height) / 10);
     width: var(--width);
     height: var(--height);
-    margin-top: calc(var(--height)/2);
+    top: calc(var(--height)/2);
+
     margin-left: auto;
     margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 
     transition: transform 400ms ease;
 }
 
-.hex.shift {
-    margin-top: 0;
-}
-
-.hex.bottom {
-    margin-top: 0;
+.hex.middle {
     grid-row: 2;
 }
 
-.hex.bottom.shift {
-    margin-top: calc(var(--height)/2);
+.hex.bottom {
+    grid-row: 3;
 }
 
-.row {
+.hex.shift {
+    top: auto;
+    bottom: 0;
+}
+
+.hex.center {
+    grid-column: 2;
+}
+
+.hex.row {
     clear: left;
 }
 
@@ -69,11 +78,73 @@
     transform: scale(1.05);
 }
 
-.abbrev {
-    font-weight: bold;
-    font-size: larger;
+/* .hex>* {
+    position: absolute;
+} */
+
+.name {
     width: var(--height);
-    text-align: center;
+    height: 1em;
     margin: 0;
-    top: 100%;
+    text-align: left;
+    order: 1;
+    flex-grow: 1;
+}
+
+.name>* {
+
+    position: absolute;
+    margin: 0;
+    transition: font-size 1s ease-out 2s, right 1s ease-in-out 1s, opacity 1s;
+
+}
+
+.abbrev {
+    right: 25%;
+}
+
+.full {
+    font-size: smaller;
+    opacity: 0;
+}
+
+.hex:hover .name>* {
+    transition: font-size 1s ease-in, right 1s ease-in-out 1s, opacity 1s linear 2s;
+
+}
+
+.hex:hover .abbrev {
+    font-size: smaller;
+    right: 75%;
+    opacity: 0;
+}
+
+.hex:hover .full {
+    opacity: 1;
+}
+
+.score {
+    margin: 0 auto;
+    width: 1.5rem;
+    align-self: center;
+    border-color: transparent;
+    background-color: transparent;
+    text-align: center;
+
+    order: 0;
+    flex-grow: 1;
+    font-size: large;
+}
+
+.modifier {
+    text-align: center;
+    font-size: large;
+
+    flex-grow: 1;
+    order: 2;
+
+
+    display: flex;
+    align-items: center;
+
 }
