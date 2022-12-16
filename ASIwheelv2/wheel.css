@@ -11,6 +11,7 @@
     row-gap: 4px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+
 }
 
 .shader {
@@ -41,25 +42,16 @@
     transition: transform 400ms ease;
 }
 
-.hex.middle {
-    grid-row: 2;
-}
-
-.hex.bottom {
-    grid-row: 3;
-}
-
-.hex.shift {
+.dex,
+.prof,
+.wis {
+    grid-column: 2;
     top: auto;
     bottom: 0;
 }
 
-.hex.center {
-    grid-column: 2;
-}
-
-.hex.row {
-    clear: left;
+.prof {
+    grid-row: 2;
 }
 
 .hex::before,
