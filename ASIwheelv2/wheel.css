@@ -3,9 +3,10 @@
     --height: 5rem;
     --width: calc(var(--height) * 0.645);
     --color: lightgray;
-    --dark: rgb(170, 170, 170);
+    --color-dark: rgb(170, 170, 170);
     --anim: .5s;
     width: calc(var(--width) * 4.2);
+    height: calc(var(--height) * 3);
     display: grid;
     column-gap: 5px;
     row-gap: 4px;
@@ -16,11 +17,13 @@
 
 .shader {
     border-radius: 50%;
-    width: inherit;
-    /* height: calc(var(--width) * 4.2); */
-    background-color: red;
-    /* background-color: rgba(211, 211, 211, 211); */
+    width: calc(var(--height) * 3);
+    height: calc(var(--height) * 3);
+    /* background-color: red; */
+    background-color: rgba(211, 211, 211, .5);
     position: absolute;
+    opacity: 0;
+    z-index: -1;
 }
 
 .hex {
@@ -76,17 +79,18 @@
 }
 
 .hex:hover {
-    --color: var(--dark);
+    --color: var(--color-dark);
     transform: scale(1.05);
     z-index: 3;
 }
 
-/* .hex>* {
-    position: absolute;
-} */
+.hex:hover~.shader {
+    z-index: 2;
+    opacity: 1;
+}
 
 .name {
-    width: var(--height);
+    width: var(--width);
     height: 1em;
     margin: 0;
     text-align: center;
@@ -97,7 +101,7 @@
 .name>* {
     width: inherit;
     position: absolute;
-    right: calc(var(--width));
+    /* right: calc(var(--width)); */
     margin: 0 auto;
     transition: font-size 1s ease-out 2s, right 1s ease-in-out 1s, opacity 1s;
 
